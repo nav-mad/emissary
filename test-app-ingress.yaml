@@ -2,7 +2,7 @@ apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: test-app-ingress
-  namespace: default
+  namespace: default  # Ensure the namespace is set for the Ingress
   annotations:
     getambassador.io/config: |
       ---
@@ -13,11 +13,11 @@ metadata:
       service: test-app:80
 spec:
   rules:
-    - host:  localhost
+    - host: localhost
       http:
         paths:
         - path: /test
-          pathType: ImplementationSpecific
+          pathType: ImplementationSpecific  # or Exact
           backend:
             service:
               name: test-app
